@@ -1,7 +1,18 @@
 ﻿ol.proj.proj4.register(proj4);
 ol.proj.get("EPSG:4326").setExtent([-63.667206, -34.265574, -61.826529, -32.417212]);
 var wms_layers = [];
-
+       
+	 var lyr_GoogleMaps_0 = new ol.layer.Tile({
+            'title': 'Google Maps',
+            'type': 'base',
+            'opacity': 1.000000,
+            
+            
+            source: new ol.source.XYZ({
+    attributions: ' ',
+                url: 'https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}'
+            })
+        });
 
         var lyr_GoogleHybrid_0 = new ol.layer.Tile({
             'title': 'Google Hybrid',
@@ -12,6 +23,17 @@ var wms_layers = [];
             source: new ol.source.XYZ({
     attributions: ' ',
                 url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
+            })
+        });
+        var lyr_OpenTopomap_2 = new ol.layer.Tile({
+            'title': 'OpenTopomap',
+            'type': 'base',
+            'opacity': 1.000000,
+            
+            
+            source: new ol.source.XYZ({
+    attributions: ' ',
+                url: 'https://tile.opentopomap.org/{z}/{x}/{y}.png'
             })
         });
 var format_PMD100aos_1 = new ol.format.GeoJSON();
@@ -64,8 +86,8 @@ var lyr_LimiteProvincial_3 = new ol.layer.Vector({
                 title: '<img src="styles/legend/LimiteProvincial_3.png" /> LimiteProvincial'
             });
 
-lyr_GoogleHybrid_0.setVisible(true);lyr_PMD100aos_1.setVisible(true);lyr_IsohietasPMD100aos_2.setVisible(true);lyr_LimiteProvincial_3.setVisible(true);
-var layersList = [lyr_GoogleHybrid_0,lyr_PMD100aos_1,lyr_IsohietasPMD100aos_2,lyr_LimiteProvincial_3];
+lyr_GoogleMaps_0.setVisible(false);lyr_GoogleHybrid_0.setVisible(true);lyr_OpenTopomap_2.setVisible(false);lyr_PMD100aos_1.setVisible(true);lyr_IsohietasPMD100aos_2.setVisible(true);lyr_LimiteProvincial_3.setVisible(true);
+var layersList = [lyr_GoogleMaps_0,lyr_GoogleHybrid_0,lyr_OpenTopomap_2,lyr_PMD100aos_1,lyr_IsohietasPMD100aos_2,lyr_LimiteProvincial_3];
 lyr_PMD100aos_1.set('fieldAliases', {'Latitud': 'Latitud', 'Longitud': 'Longitud', 'PMD 100 añ': 'PMD 100 años [mm]', });
 lyr_IsohietasPMD100aos_2.set('fieldAliases', {'fid': 'fid', 'ID': 'ID', 'ELEV': 'ELEV', });
 lyr_LimiteProvincial_3.set('fieldAliases', {'gid': 'gid', });
